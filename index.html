@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>REINOVA GROUNDWORKS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="locked">
+
+  <!-- Intro container: white overlay (startOverlay) sits above the video -->
+  <div id="intro" aria-hidden="false">
+    <div id="startOverlay" aria-hidden="false">
+      <button id="overlayStartBtn" aria-label="Start video">
+        <img src="button.png" alt="Start" />
+      </button>
+    </div>
+
+    <!-- video element (kept behind overlay until we fade it in) -->
+    <video id="introVideo" playsinline preload="auto" muted>
+      <source src="vid.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+<!-- Navbar -->
+<!-- Navbar -->
+<nav id="navbar" aria-hidden="true">
+  <div class="nav-left">
+    <a href="#home" class="site-name">Reinova Groundworks</a>
+  </div>
+  <div class="nav-right">
+    <ul>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#order">Order</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#inquiries">Inquiries</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+  <!-- Title / Hero -->
+  <header id="home" class="section hero">
+	<img src='logo.png' alt="Reinova Groundworks" class="logo">
+    <h1>REINOVA GROUNDWORKS</h1>
+    <p>Strength Woven Into Every Step.</p>
+	<br><br>
+    <button class="scroll-button" id="learnMoreBtn">Learn More</button>
+  </header>
+
+  <!-- About -->
+  <section id="about" class="section scrollable">
+    <div class="content">
+      <h2>About Our Company</h2>
+      <p><strong>Reinova Groundworks</strong> is a sustainable construction solutions company founded in 2018 in San Fernando, Pampanga.
+        We combine natural materials with pathway construction to create eco-friendly and durable products, serving clients
+        across Central Luzon and continue to drive innovation in sustainable construction through research, development, and design excellence.</p>
+
+  <!-- Vision & Mission as part of About -->
+  <div id="vision-mission" class="vision-mission-container">
+    <div class="vision">
+      <h2>Our Vision</h2>
+      <p>To lead the way in sustainable construction by redefining durability and design through nature-inspired innovation.</p>
+    </div>
+    <div class="mission">
+      <h2>Our Mission</h2>
+      <p>To provide eco-reinforced materials and customized solutions that promote environmental responsibility, structural resilience, and community development.</p>
+    </div>
+	<br><br>
+  </div>
+
+      </div>
+    <div class="controls">
+      <button class="ghost" data-goto="home">← Back</button>
+      <button class="next" data-goto="products">Next →</button>
+    </div>
+  </section>
+
+<!-- Products -->
+<section id="products" class="section">
+  <div class="content">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+
+      <div class="product-card" style="background-image:url('slab.png')">
+        <div class="overlay">
+          <h3>Bamboo Reinforced Concrete Patio Slabs</h3>
+          <p>✦ Strong, eco-friendly alternative to steel reinforcement.</p>
+        </div>
+      </div>
+
+      <div class="product-card" style="background-image:url('stone.png')">
+        <div class="overlay">
+          <h3>Coconut Husk Stepping Stones</h3>
+          <p>✦ Lightweight yet durable, perfect for outdoor use.</p>
+        </div>
+      </div>
+
+      <div class="product-card" style="background-image:url('tile.png')">
+        <div class="overlay">
+          <h3>Abaca Fiber-Reinforced Indoor Tiles</h3>
+          <p>✦ Sturdy moisture-resistant tiles designed for premium indoor use.</p>
+        </div>
+      </div>
+
+      <div class="product-card" style="background-image:url('bag.png')">
+        <div class="overlay">
+          <h3>Polyester-Reinforced Soil Bags</h3>
+          <p>✦ For erosion control, slope protection, and road embankments.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="ghost" data-goto="about">← Back</button>
+    <button class="next" data-goto="order">Next →</button>
+  </div>
+</section>
+
+
+<section id="order" class="section">
+  <div class="content order-content">
+	<h2>Order our products!</h2>
+
+
+    <form action="https://formspree.io/f/mqadqkkb" method="POST">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="product">Product:</label>
+      <select id="product" name="product" required>
+        <option value="">-- Select a product --</option>
+        <option value="Bamboo Reinforced Concrete Patio Slabs">Bamboo Reinforced Concrete Patio Slabs</option>
+        <option value="Coconut Husk Stepping Stones">Coconut Husk Stepping Stones</option>
+        <option value="Abaca Fiber-Reinforced Indoor Floor Tiles">Abaca Fiber-Reinforced Indoor Floor Tiles</option>
+        <option value="Polyester-Reinforced Soil Bags">Polyester-Reinforced Soil Bags</option>
+      </select>
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" min="1" required>
+
+      <label for="address">Delivery Address:</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <label for="payment">Mode of Payment:</label>
+      <select id="payment" name="payment" required>
+        <option value="">-- Select a payment method --</option>
+        <option value="Cash on Delivery">Cash on Delivery</option>
+        <option value="GCash">GCash</option>
+        <option value="PayMaya">PayMaya</option>
+      </select>
+
+      <div id="paymentInfo" class="payment-info">
+        Please send your payment to: <br>
+        <strong>(+63) 927 982 7690</strong>
+      </div>
+
+      <input type="hidden" name="_redirect" value="thankyou.html">
+      <button type="submit" class="primary">Place Order</button>
+    </form>
+  </div>
+  <div class="controls">
+    <button class="ghost" data-goto="products">← Back</button>
+    <button class="next" data-goto="reviews">Next →</button>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section id="reviews" class="section scrollable">
+  <div class="content">
+    <h2>Post a Review</h2>
+    <form id="reviewForm">
+      <label for="reviewName">Name:</label>
+      <input type="text" id="reviewName" name="reviewName" required>
+
+      <label for="reviewStars">Rating:</label>
+      <div class="star-rating">
+        <input type="radio" name="stars" id="star5" value="5"><label for="star5">★</label>
+        <input type="radio" name="stars" id="star4" value="4"><label for="star4">★</label>
+        <input type="radio" name="stars" id="star3" value="3"><label for="star3">★</label>
+        <input type="radio" name="stars" id="star2" value="2"><label for="star2">★</label>
+        <input type="radio" name="stars" id="star1" value="1" checked><label for="star1">★</label>
+      </div>
+
+      <label for="reviewText">Message:</label>
+      <textarea id="reviewText" name="reviewText" rows="3" required></textarea>
+
+      <button type="submit" class="primary">Post Review</button>
+    </form>
+	
+	<br><br>
+	<h2>Public Reviews</h2>
+    <div id="reviewsList"></div>
+  </div>
+      <div class="controls">
+      <button class="ghost" data-goto="order">← Back</button>
+      <button class="next" data-goto="inquiries">Next →</button>
+    </div>
+</section>
+
+<!-- Inquiry Section -->
+<section id="inquiries" class="section scrollable">
+  <div class="content">
+    <h2>Send an Inquiry</h2>
+    <form action="https://formspree.io/f/mqadqkkb" method="POST">
+      <label for="inqName">Full Name:</label>
+      <input type="text" id="inqName" name="name" required>
+
+      <label for="inqEmail">Email Address:</label>
+      <input type="email" id="inqEmail" name="email" required>
+
+      <label for="inqMessage">Message / Question:</label>
+      <textarea id="inqMessage" name="message" rows="4" required></textarea>
+
+      <input type="hidden" name="_redirect" value="thankyou.html">
+      <button type="submit" class="primary">Send Inquiry</button>
+    </form>
+    </div>  
+	<div class="controls">
+      <button class="ghost" data-goto="reviews">← Back</button>
+	  <button class="next" data-goto="contact">Next →</button>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Feel free to reach out and follow us on our platforms!</h2>
+  <div class="contact-columns">
+    <!-- Column 1: Contact Info -->
+    <div class="contact-col">
+	  <h3>Contact Information</h3>
+      <p><strong>Phone:</strong> (+63) 927 982 7690</p>
+      <p><strong>Email:</strong> reinovagroundworks@gmail.com</p>
+      <p><strong>Location:</strong> Brgy. Sindalan, 3786 2, San Fernando, Pampanga</p>
+    </div>
+
+    <!-- Column 2: Social Media -->
+    <div class="contact-col">
+      <h3>Social Media Platforms</h3>
+      <p><strong>YouTube:</strong> 
+        <a href="https://www.youtube.com/@ReinovaGroundworks" target="_blank">Reinova Groundworks</a>
+      </p>
+      <p><strong>TikTok:</strong> 
+        <a href="https://www.tiktok.com/@reinova.groundworks" target="_blank">@reinova.groundworks</a>
+      </p>
+      <p><strong>Instagram:</strong> 
+        <a href="https://instagram.com/reinovagroundworks" target="_blank">@reinovagroundworks</a>
+      </p>
+    </div>
+  </div>    
+  <div class="controls">
+      <button class="ghost" data-goto="inquiries">← Back</button>
+	</div>
+</section>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
