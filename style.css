@@ -1,0 +1,544 @@
+/* Global font setup */
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #333; /* professional dark gray for readability */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; /* bold for clear hierarchy */
+  color: #111; /* deep black for strong contrast */
+}
+
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { height:100%; width:100%; font-family:Arial, sans-serif; scroll-behavior:smooth; }
+
+body.locked { overflow:hidden; }
+html.snap { scroll-snap-type:y mandatory; }
+html.free { scroll-snap-type:none; }
+
+/* Sections */
+.section {
+  height:100vh;
+  padding:80px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  scroll-snap-align:start;
+}
+.section.scrollable .content {
+  max-height:calc(100vh - 160px);
+  overflow-y:auto;
+  width:min(900px,92vw);
+}
+
+/* Intro */
+#intro { position:fixed; inset:0; z-index:10000; background:#fff; display:flex; justify-content:center; align-items:center; }
+#startOverlay { position:absolute; inset:0; background:#fff; display:flex; justify-content:center; align-items:center; transition:opacity .35s; z-index:10010; }
+#startOverlay.fade-out { opacity:0; pointer-events:none; }
+#overlayStartBtn { background:transparent; border:none; cursor:pointer; }
+#overlayStartBtn img { max-width:170px; display:block; }
+#introVideo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .35s; z-index:10000; pointer-events:none; }
+#introVideo.visible { opacity:1; }
+
+/* Navbar */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 12px 40px;
+  display: none;          /* start hidden */
+  z-index: 11000;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+#navbar.show {
+  display: flex;          /* show only when .show is added */
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#navbar .site-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+#navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+#navbar ul li a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+#navbar ul li a:hover {
+  color: #ae8954;
+}
+
+/* offset page so sections don’t hide under fixed nav */
+body {
+  padding-top: 70px; 
+}
+
+
+/* Content */
+.content { width:min(900px,92vw); text-align:center; }
+h1 { font-size:2.5rem; margin-bottom:12px; }
+h2 { font-size:2rem; margin-bottom:12px; }
+
+/* Controls */
+.controls { width:min(900px,92vw); margin-top:20px; display:flex; justify-content:space-between; }
+.controls.single { justify-content:flex-start; }
+
+/* Buttons */
+.scroll-button,.controls .next,.controls .ghost {
+  padding:12px 18px; border:none; border-radius:10px; cursor:pointer;
+}
+.scroll-button,.controls .next { background:#ae8954; color:#fff; }
+.controls .ghost { background:#fff; border:1px solid #ddd; }
+
+/* Colors */
+#about { background:#f1f1f1; }
+#products { background:#e6f7ff; }
+#order { background:#f1e6ff; }
+
+/* Order Section */
+#order {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+  padding:40px 20px;
+  scroll-snap-align:start;
+  overflow-y:auto;   /* scroll only inside */
+}
+
+#order .order-content {
+  width:min(900px,92vw);
+  text-align:center;
+  flex:1;            /* occupy space properly */
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+#order form {
+  flex:1;
+  max-height:70vh;
+  overflow-y:auto;
+  padding:20px;
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 0 6px rgba(0,0,0,0.1);
+  text-align:left;
+}
+
+#order form label { display:block; margin-top:10px; font-weight:bold; }
+#order form input, #order form select, #order form textarea {
+  width:100%; padding:8px; margin-top:4px; border:1px solid #ccc; border-radius:4px;
+}
+#order form button.primary {
+  margin-top:16px; padding:12px; background:#ae8954; color:#fff; border:none; border-radius:6px; cursor:pointer;
+}
+#order form button.primary:hover { background:#8c6d43; }
+
+#paymentInfo { display:none; margin-top:10px; }
+
+/* Responsive */
+@media(max-width:700px) {
+  .section { padding:40px 16px; }
+  #overlayStartBtn img { max-width:120px; }
+}
+
+/* Vision & Mission inside About */
+#vision-mission {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 700px;   /* 🔥 narrower block */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.vision, .mission {
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.vision:hover, .mission:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Responsive: stack vertically */
+@media (max-width: 768px) {
+  #vision-mission {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 700px; /* smaller than 900px */
+  gap: 1rem;        /* optional: smaller spacing */
+  margin: 2rem auto 0;
+}
+
+.product-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 180px;   /* reduced from 250px */
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Overlay for hover */
+.product-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  padding: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .overlay {
+  opacity: 1;
+}
+
+.product-card .overlay h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.product-card .overlay p {
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+/* Responsive: stack cards on small screens */
+@media(max-width:768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card {
+    height: 160px;
+  }
+}
+
+/* Reviews & Inquiries Sections */
+#reviews, #inquiries {
+  background: #f9f9f9;
+  padding: 80px 20px;
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto; /* allow internal scroll */
+}
+
+#reviews .content, #inquiries .content {
+  width: min(900px, 92vw);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Forms inside these sections */
+#reviews form, #inquiries form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+#reviews form label, #inquiries form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+#reviews form input, #reviews form textarea,
+#inquiries form input, #inquiries form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#reviews form button.primary, #inquiries form button.primary {
+  margin-top: 16px;
+  padding: 12px;
+  background: #ae8954;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#reviews form button.primary:hover, #inquiries form button.primary:hover {
+  background: #8c6d43;
+}
+
+/* Star Rating for Reviews */
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 5px;
+  font-size: 1.5rem;
+}
+
+.star-rating input { display: none; }
+.star-rating label {
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: #ffcc00;
+}
+
+/* Review Cards */
+#reviewsList .review-card {
+  background: #e6f7ff;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+
+.review-stars { color: #ffcc00; margin-bottom: 4px; }
+
+/* Controls */
+#reviews .controls, #inquiries .controls {
+  width: min(900px, 92vw);
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+  #reviews, #inquiries {
+    padding: 40px 16px;
+  }
+
+  .star-rating { font-size: 1.2rem; }
+}
+
+#contact {
+  background: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#contact h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contact-columns {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px; /* space between columns */
+  margin-top: 30px;
+  flex-wrap: wrap; /* stack on small screens */
+}
+
+.contact-col {
+  flex: 1 1 300px; /* flexible width but minimum 300px */
+  max-width: 400px;
+  text-align: left; /* align text properly */
+}
+
+.contact-col p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.contact-col a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.contact-col a:hover {
+  text-decoration: underline;
+}
+
+/* Title / Hero Section */
+#home {
+  background: url("title.png") no-repeat center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;                 /* text stays visible */
+  position: relative;
+}
+
+/* Optional: dark overlay so text is easier to read */
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.3); /* white tint instead */
+  z-index: 0;
+}
+
+/* Homepage heading & text colors */
+#home h1 {
+  color: black; /* white (or any color you want) */
+}
+
+#home h2 {
+  color: #ffd700; /* example: gold */
+}
+
+#home p {
+  color: black; /* lighter gray for contrast */
+}
+
+/* Make sure text sits above overlay */
+#home h1,
+#home p,
+#home .scroll-button {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Change background for all sections except the hero/title page */
+.section:not(#home) {
+	background-image: url('bg.png');
+	background-size: cover;
+	background-position: center;
+}
+
+/* All other sections */
+.section:not(#home) h2 {
+  color: #ae8954;   /* dark text on light backgrounds */
+}
+
+/* All sections except title page */
+.section:not(#home) .controls .next {
+  background: #ae8954;   /* blue button */
+  color: #fff;
+}
+
+.section:not(#home) .controls .ghost {
+  background: #ae8954;      /* light button */
+  border: 1px solid #ccc;
+  color: #fff;
+}
+
+/* Optional: hover effects */
+.section:not(#home) .controls .next:hover {
+  background: #ae8954;
+}
+
+.section:not(#home) .controls .ghost:hover {
+  background: #ae8954;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: url('navbar.png') no-repeat center center;
+  background-size: cover;
+  height: 50px; /* matches your padding-top */
+  display: none;          /* start hidden */
+  z-index: 11000;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+#home h1,
+#home h2,
+#home .logo {
+  position: relative;
+  z-index: 2;  /* ensures it's above the white tint */
+}
+
+/* Target only the links inside the second contact-col (social media) */
+.contact-col:nth-of-type(2) a {
+  color: #ae8954; /* gold */
+  text-decoration: none;
+  font-weight: bold; /* optional */
+}
+
+.contact-col:nth-of-type(2) a:hover {
+  color: #8c6d43; /* darker gold on hover */
+  text-decoration: underline; /* optional */
+}
+
+/* Justify About section text */
+#about .content p {
+  text-align: justify;
+  line-height: 1.6; /* optional: improves readability */
+}
+
+/* Justify Vision & Mission boxes */
+#vision-mission p {
+  text-align: justify;
+  line-height: 1.6; /* same improvement */
+}
+
