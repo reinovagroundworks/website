@@ -106,6 +106,18 @@ body {
   padding-top: 70px;  /* ✅ matches navbar height */
 }
 
+/* Kill any ghost gaps between navbar and hero */
+#navbar {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  line-height: 0;
+}
+
+#home {
+  margin-top: -1px; /* ✅ pulls hero up by 1px to cover any white gap */
+}
+
 /* Content */
 .content { width:min(900px,92vw); text-align:center; }
 h1 { font-size:2.5rem; margin-bottom:12px; }
@@ -541,5 +553,6 @@ h2 { font-size:2rem; margin-bottom:12px; }
   text-align: justify;
   line-height: 1.6; /* same improvement */
 }
+
 
 
