@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Reset */
 * { margin:0; padding:0; box-sizing:border-box; }
-html,body { height:100%; width:100%; font-family:Arial, sans-serif; scroll-behavior:smooth; }
+html,body { height:100%; width:100%; font-family:Arial, sans-serif; scroll-behavior:smooth; background:#000; } /* 🔥 body bg set to black to kill white flash */
 
 body.locked { overflow:hidden; }
 html.snap { scroll-snap-type:y mandatory; }
@@ -53,9 +53,10 @@ html.free { scroll-snap-type:none; }
   top: 0;
   left: 0;
   right: 0;
-  background: white;
-  padding: 12px 40px;
-  display: none;          /* start hidden */
+  background: url('navbar.png') no-repeat center center;
+  background-size: cover;
+  height: 70px; /* ✅ matches body padding-top */
+  display: none;          
   z-index: 11000;
 
   justify-content: space-between;
@@ -63,7 +64,7 @@ html.free { scroll-snap-type:none; }
 }
 
 #navbar.show {
-  display: flex;          /* show only when .show is added */
+  display: flex;
   animation: fadeIn 0.6s ease;
 }
 
@@ -102,9 +103,8 @@ html.free { scroll-snap-type:none; }
 
 /* offset page so sections don’t hide under fixed nav */
 body {
-  padding-top: 70px; 
+  padding-top: 70px;  /* ✅ matches navbar height */
 }
-
 
 /* Content */
 .content { width:min(900px,92vw); text-align:center; }
@@ -541,4 +541,5 @@ h2 { font-size:2rem; margin-bottom:12px; }
   text-align: justify;
   line-height: 1.6; /* same improvement */
 }
+
 
